@@ -1,0 +1,156 @@
+
+{% include 'adminheader.html'%}
+
+
+<!-- banner -->
+  <div class="pogoSlider" id="js-main-slider">
+    <div data-duration="2000" style="background-image:url(/static/images/b1.jpg);background-size: cover;height: 700px;padding-top: 200px">
+      <div>
+        <div class="container">
+
+
+<center>
+<h1>Manage brand</h1>
+<form method="post" class="box">
+	{% if data['brandupdate']%}
+	
+	<div class="form-main-sec">
+		
+		
+			<th>Name</th>
+			<input type="text" required="" class="form-control" value="{{data['brandupdate'][0]['brand_name']}}" name="fname">
+		
+		
+		
+		
+			<TH>Description</TH>
+			<textarea name="dis" required="" class="form-control">{{data['brandupdate'][0]['brand_description']}}</textarea>
+		
+		
+		
+		<input type="submit" name="update" value="submit" class="btn btn-success"></td>
+	</div>
+{% else %}
+<div class="form-main-sec">
+		
+		
+		   <th>Name</th> 
+			<input type="text" required="" class="form-control" name="fname">
+		
+		
+		
+		
+			<th>Description</th>
+			<textarea name="dis" required="" class="form-control"></textarea>
+		
+		
+		
+		<input type="submit" name="brand" value="submit" class="btn btn-success">
+	</div>
+{% endif %}
+</form>
+</center>
+
+</div></div></div></div>
+<center style="background-color: #2ecc71;">
+	<h1>view brand</h1>
+	<form>
+		<table class="table" style="width: 500px;background-color:black;color:white;border-radius:30px">
+			<tr style="background-color: grey;">
+				<th>sino</th>
+				
+				<th>Name</th>
+				<th>Description</th>
+				<th>Status</th>
+				<th>Updation</th>
+				
+			</tr>
+			{% for row in data['subview']%}
+    	<tr>
+    		<td>{{loop.index}}</td>
+    			
+    		<td>{{row['brand_name']}}</td>
+    		<td>{{row['brand_description']}}</td>
+
+
+    	      {% if row['brand_status']=="1"%}
+
+            <td><a class="btn btn-success" href="?action=inactive&sid={{row['brand_id']}}">InActive</a></td>
+
+            {% elif row['brand_status']=="0"%}
+           
+
+    		
+    			<td><a class="btn btn-success" href="?action=active&sid={{row['brand_id']}}">Active</a></td>
+    	{% endif %}
+    		
+    		
+    		<td><a class="btn btn-success" href="?action=update&sid={{row['brand_id']}}">update</a></td>
+    		
+
+
+    	</tr>
+    	{% endfor %}
+    	
+   
+		</table>
+	</form>
+	<style>
+		.box {
+                    
+                  
+		opacity: 0.8;
+		border-radius: 90px;
+		background-color: black;
+		color: white;
+		text-align: center;
+		transition: 0.25s;
+		
+	}
+	
+	.box input[type="email"],
+	.box input[type="password"],
+	.box input[type="text"],
+	.box input[type="number"],
+	.box textarea,
+	.box select{
+		border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #3498db;padding: 10px 10px;width: 250px;outline: none;color: white;border-radius: 24px;transition: 0.25s
+	}
+	
+	.box h1 {
+		color: white;
+		text-transform: uppercase;
+		font-weight: 500
+	}
+	.box h2 {
+		color: white;
+		text-transform: uppercase;
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		font-weight: 100;
+		font-size: medium;
+		font-style: italic;
+	}
+	
+	.box input[type="text"]:focus,
+	.box input[type="password"]:focus,
+	.box input[type="email"]:focus,
+	.box input[type="number"]:focus,
+	.box textarea :focus,
+	.box select :focus{
+		width: 300px;border-color: #2ecc71
+	}
+	
+	.box input[type="submit"] {border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #2ecc71;padding: 14px 40px;outline: none;color: white;border-radius: 24px;transition: 0.25s;cursor: pointer
+	}
+	
+	.box input[type="submit"]:hover {
+		background: #2ecc71
+	}
+	
+	.form-main-sec{
+		margin: 50px auto !important;
+	}
+	
+	</style>
+</center>
+{% include 'footer.html'%}

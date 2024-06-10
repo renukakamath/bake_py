@@ -1,0 +1,106 @@
+{% include 'customerheader.html'%}
+
+
+
+
+<!-- middle slider -->
+	<div class="projects py-5" style="background-color: rgb(0, 0, 0);">
+<br><br>
+		<h1 style="color: aliceblue;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" >View Product</h1>
+
+		<center>
+	<form method="post">
+			<table>
+				<tr>
+					<td ><input style="border-radius: 30px;" type="text" placeholder="search here....." name="product"></td>
+					<td><input style="border-radius: 30px;" type="submit" class="btn btn-success" name="search"></td>
+				</tr>
+			</table>
+
+
+
+        <label style="font-size: 12px;color: white;float: left;">Available Categories</label>
+        <div style="width: 100%;min-height: 50px;background: rgba(255,255,255,.2);display: flex;justify-content: center;align-items: center;border-radius: 4px;gap:5px">
+          {% for row in data['cat']%}
+
+        <a style="background: #ffb727;color: white;font-size: 10px;padding: 5px 10px;border-radius: 3px" href="?action=search&key={{row['category_id']}}">{{row['category_name']}}</a><br>
+
+
+        {% endfor %}
+	</form>
+</center>
+
+
+		<div class="projects-grids py-xl-5 py-lg-3">
+
+			
+			<div class="sreen-gallery-cursual">
+
+				<div class="container" >
+					<div class="row"  >
+
+{% for row in data['productsearch']%}
+
+	<div class="item col-sm-3" style="margin-right:250px;margin-bottom:30px;">
+
+							
+							<div class="projects-agile-grid-info" style="background-color: rgb(255, 255, 255);width:500px;opacity:0.8;height:600px;border-radius:50px;padding:30px;" >
+								<img style="height: 200px;width: 200px;border-radius:50px" src="/{{row['product_image'] }}" alt="" class="img-fluid" />
+								<div class="projects-grid-caption text-center mt-4">
+									<h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Product Name:{{row['product_name']}}</h4>
+									<h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">category:{{row['category_name']}}</h4>
+									<h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Brand:{{row['brand_name']}}</h4>
+										<h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">ExpiryDate:{{row['ExpiryDate']}}</h4>
+
+										<h4 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">ManufactureDate:{{row['ManufactureDate']}}</h4>
+									<p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" class="my-2">Description:{{row['product_description'] }}</p>
+									<a  style="background-color: black;color:black" href="#">Rate:{{row['rate']}}</a>
+
+									{% if row['stock'] | int > 0%}
+    		<a href="customer_addtocart?pid={{row['product_id']}}&pname={{row['product_name']}}&pdis={{row['product_description']}}&pimg={{row['product_image']}}&pamo={{row['rate']}}&stock={{row['stock']}}">Add To Cart</a>
+
+
+    		
+          <td><a class="btn btn-success" href="customer_addtocarts?pid={{row['product_id']}}&pname={{row['product_name']}}&pdis={{row['product_description']}}&pimg={{row['product_image']}}&pamo={{row['rate']}}&stock={{row['stock']}}">Buy Now</a></td>
+
+    		{% elif row['stock'] | int <= 0%}
+
+   
+            <a class="btn btn-success" href="#">Out  Of  Stock</a>
+             {% endif %}
+
+								</div>
+							</div>
+
+							
+						</div>
+
+
+
+{% endfor %}
+						
+					</div>
+				</div>
+
+				
+			
+
+					
+
+
+				
+			</div>
+
+				
+		</div>
+	</div>
+	<!-- //middle slider -->
+
+
+
+    		
+         
+    	
+    	
+   
+{% include 'footer.html'%}

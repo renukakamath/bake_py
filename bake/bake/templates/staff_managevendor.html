@@ -1,0 +1,179 @@
+{% include 'staffheader.html'%}
+
+<!-- banner -->
+<div class="pogoSlider" id="js-main-slider">
+    <div data-duration="2000" style="background-image:url(/static/images/b3.jpg);background-size: cover;padding-top: 200px">
+      <div>
+        <div class="container">
+<center>
+<h1>Manage Vendor</h1>
+<form method="post" class="box">
+
+	{% if data['vendorupdate']%}
+
+	
+			<h2>Name</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_name']}}" name="fname">
+
+			<h2>Building Name</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_building_name']}}"  name="hno">
+
+			<h2>Street</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_street']}}"   name="street">
+
+			<h2>City</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_city']}}"  name="city">
+
+			<h2>State</h2>
+			<input type="text" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_state']}}" name="state">
+
+			<h2>Pincode</h2>
+			<input type="text" required="" pattern="[0-9]{6}" value="{{data['vendorupdate'][0]['vendor_pincode']}}" class="form-control"  name="pin">
+
+			<h2>Phone</h2>
+			<input type="text" required="" pattern="[0-9]{10}" class="form-control" value="{{data['vendorupdate'][0]['vendor_phone']}}"    name="num">
+
+			<th>E-Mail</th>
+			<input type="email" required="" class="form-control" value="{{data['vendorupdate'][0]['vendor_email']}}"  name="email">
+		
+		<input type="submit" name="up" value="submit" class="btn btn-success">
+	
+{% else %}
+<div clss="form-main-sec">		
+			<h2>Name</h2>
+			<input type="text" required="" class="form-control"  name="fname">
+
+			<h2>Building Name</h2>
+			<input type="text" required="" class="form-control"name="hno">
+
+			<h2>Street</h2>
+			<input type="text" required="" class="form-control"    name="street">
+
+			<h2>City</h2>
+			<input type="text" required="" class="form-control"  name="city">
+	
+			<h2>State</h2>
+			<input type="text" required="" class="form-control" name="state">
+
+			<h2>Pincode</h2>
+			<input type="text" required="" pattern="[0-9]{6}"  class="form-control"  name="pin">
+		
+			<h2>Phone</h2>
+			<input type="text" required="" pattern="[0-9]{10}" class="form-control"  name="num">
+		
+			<h2>E-Mail</h2>
+			<input type="email" required="" class="form-control"  name="email">
+		<input type="submit" name="vendor" value="submit" class="btn btn-success">
+		</div>
+	
+{% endif %}
+</form>
+</center>
+
+</div></div></div></div>
+<center>
+	<h1>view Vendor</h1>
+	<form>
+		<table class="table" style="width: 500px;background-color:black;color:white;border-radius:30px">
+			<tr>
+				<th>sino</th>
+				<th>Name</th>
+				<th>Building Name</th>
+				<th>Street</th>
+				<th>City</th>
+				<th>State</th>
+				<th>Pincode</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Date</th>
+				<th>Status</th>
+				<th>Updation</th>
+	
+			</tr>
+	{% for row in data['vendorview']%}
+    	<tr>
+    		<td>{{loop.index}}</td>
+    		<td>{{row['vendor_name'] }}</td>
+    		<td>{{row['vendor_building_name'] }}</td>
+
+    		<td>{{row['vendor_street'] }}</td>
+    		<td>{{row['vendor_city'] }}</td>
+    		<td>{{row['vendor_state'] }}</td>
+    		<td>{{row['vendor_pincode'] }}</td>
+    		<td>{{row['vendor_phone']}}</td>
+    		<td>{{row['vendor_email']}}</td>
+    		<td>{{row['date_added']}}</td>
+    		
+
+    		{% if row ['vendor_status']=="1"%}
+              <td><a class="btn btn-success" href="?action=inactive&vid={{row['vendor_id']}}">InActive</a></td>
+            
+             {% elif row ['vendor_status']=="0"%}
+             	<td><a class="btn btn-success" href="?action=active&vid={{row['vendor_id']}}">Active</a></td>
+         
+           {% endif %}
+      <td><a class="btn btn-success" href="?action=update&vid={{row['vendor_id']}}">Update</a></td>
+             
+    	</tr>
+    	{% endfor %}
+    
+		</table>
+    
+	</form>
+</center>
+<style>
+	.box {
+				
+			  
+	opacity: 0.8;
+	border-radius: 90px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	transition: 0.25s;
+	
+}
+
+.box input[type="email"],
+.box input[type="password"],
+.box input[type="text"],
+.box input[type="number"] {
+	border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #3498db;padding: 10px 10px;width: 250px;outline: none;color: white;border-radius: 24px;transition: 0.25s
+}
+
+.box h1 {
+	color: white;
+	text-transform: uppercase;
+	font-weight: 500
+}
+.box h2 {
+	color: white;
+	text-transform: uppercase;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-weight: 100;
+	font-size: medium;
+	font-style: italic;
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus,
+.box input[type="email"]:focus,
+.box input[type="number"]:focus {
+	width: 300px;border-color: #2ecc71
+}
+
+.box input[type="submit"] {border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #2ecc71;padding: 14px 40px;outline: none;color: white;border-radius: 24px;transition: 0.25s;cursor: pointer
+}
+
+.box input[type="submit"]:hover {
+	background: #2ecc71
+}
+
+.form-main-sec{
+	margin: 50px auto !important;
+}
+
+</style>
+</center>
+
+{% include 'footer.html'%}

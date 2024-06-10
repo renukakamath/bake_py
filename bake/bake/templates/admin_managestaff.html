@@ -1,0 +1,252 @@
+{% include 'adminheader.html'%}
+
+
+<!-- banner -->
+  <div class="pogoSlider" id="js-main-slider">
+    <div data-duration="2000" style="background-image:url(/static/images/b2.jpg);background-size: cover;padding-top: 200px">
+      <div>
+        <div class="container">
+<center>
+<h1 style="color: aliceblue;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Manage Staff</h1>
+<br>
+<form method="post" class="box">
+	{% if data['staffupdate'] %}
+	
+	<h2>First Name</h2>
+	<input type="text" required="" class="form-control" value="{{data['staffupdate'][0]['staff_fname']}}"  name="fname">
+		
+	<h2>Last Name</h2>
+			<input type="text" required="" class="form-control" value="{{data['staffupdate'][0]['staff_lname']}}" name="lname">
+		
+
+
+			<h2>House Name</h2>
+			<input type="text" required="" class="form-control" value="{{data['staffupdate'][0]['staff_house_name']}}"  name="hno">
+		
+
+			<h2>Street</h2>
+			<input type="text" required="" class="form-control"  value="{{data['staffupdate'][0]['staff_street']}}"  name="street">
+		
+
+		
+			<h2>City</h2>
+			<input type="text" required="" class="form-control" value="{{data['staffupdate'][0]['staff_city']}}"  name="city">
+		
+
+		
+			<h2>State</h2>
+			<input type="text" required="" class="form-control" value="{{data['staffupdate'][0]['staff_state']}}" name="state">
+		
+
+
+		
+			<h2>Pincode</h2>
+			<input type="text" required="" pattern="[0-9]{6}" value="{{data['staffupdate'][0]['staff_pincode']}}" class="form-control"name="pin">
+		
+			<h2>Phone</h2>
+			<input type="text" required="" pattern="[0-9]{10}" value="{{data['staffupdate'][0]['staff_phone']}}"  class="form-control" name="num">
+		
+		
+
+			<h2>Email</h2>
+			<input type="email" required="" value="{{data['staffupdate'][0]['staff_email']}}" class="form-control"  name="email">
+		
+
+
+			
+			<h2>Salary</h2>
+			<input type="text" required="" class="form-control" value="{{data['staffupdate'][0]['staff_salary']}}"  name="salary">
+		
+
+
+		
+		
+
+		<input type="submit" name="update" value="submit" class="btn btn-success">
+</div>
+{% else %}
+<div clss="form-main-sec">
+	
+	
+	<h2>First Name</h2>
+			<input type="text" required="" class="form-control" placeholder="First Name" name="fname">
+		
+		
+			<h2>Last Name</h2>
+			<input type="text" required="" class="form-control" placeholder="Last Name" name="lname">
+		
+
+
+		
+			<h2>House Name</h2>
+			<td><input type="text" required="" class="form-control" placeholder="House Name" name="hno">
+		
+
+		
+				<h2>Street</h2>
+			<input type="text" required="" class="form-control" placeholder="Street" name="street">
+		
+
+		
+			<h2>City</h2>
+			<input type="text" required="" class="form-control" placeholder="City"  name="city">
+		
+
+			<h2>
+			State</h2>
+			<input type="text" required="" class="form-control" placeholder="State" name="state">
+		
+
+
+		
+			<h2>Pincode</h2>
+			<input type="text" required="" pattern="[0-9]{6}" placeholder="Pincode" class="form-control"name="pin">
+		
+			<h2>
+			Phone</h2>
+			<input type="text" required="" pattern="[0-9]{10}" placeholder="Phone" class="form-control" name="num">
+		
+			<h2>
+			Email</h2>
+			<input type="email" required=""  class="form-control" placeholder="Email" name="email">
+		
+
+
+			<h2>
+			Salary</h2>
+			<input type="text" required="" class="form-control" placeholder="Salary"  name="salary">
+		
+
+
+			<h2>
+		User Name</h2>
+			<input type="text" required="" class="form-control" placeholder="User Name"  name="uname">
+		
+			<h2>Password</h2>
+			<input type="password" required="" class="form-control" placeholder="Password" name="pwd">
+		
+		<input type="submit" name="staffreg" value="submit" class="btn btn-success">
+			</div>
+{% endif %}
+</form>
+<br>
+</center>
+
+</div></div></div></div>
+<center>
+	<h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">View Staff</h1>
+	<form>
+		<table class="table" style="width: 500px;background-color:black;color:white;border-radius:30px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+		<tr>
+				<th>sino</th>
+			   <th>First Name</th>
+				<th>Last Name</th>
+				<th>House Name</th>
+				<th>Street</th>
+				<th>City</th>
+				  <th>State</th>
+				<th>Pincode</th>
+				<th>Salary</th>
+				<th>date</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Status</th>
+				<th>Updation</th>
+				
+
+			   		
+		</tr>
+			{% for row in data['staffview']%}
+    	<tr>
+    		<td>{{loop.index}}</td>
+    		<td>{{row['staff_fname'] }}</td>
+    		<td>{{row['staff_lname']}}</td>
+    		<td>{{row['staff_house_name']}}</td>
+    		<td>{{row['staff_street'] }}</td>
+    		<td>{{row['staff_city'] }}</td>
+    		<td>{{row['staff_state'] }}</td>
+    	
+    		<td>{{row['staff_pincode'] }}</td>
+    		<td>{{row['staff_salary']}}</td>
+    		<td>{{row['date_added'] }}</td>
+    		<td>{{row['staff_phone'] }}</td>
+    		<td>{{row['staff_email']}}</td>
+
+
+    	{% if row['status']=='1' %}
+
+       <td><a class="btn btn-success"  href="?action=inactive&uid={{row['username']}}">In Actice</a></td>
+
+     {% elif row['status']=='0'%}
+           
+           
+    		
+    			<td><a class="btn btn-success" href="?action=active&uid={{row['username']}}">Active</a></td>
+
+    		
+    		{% endif %}
+    			
+    
+    		   <td><a class="btn btn-success" href="?action=update&uid={{row['username']}}">Update</a></td>
+
+    		
+    
+    	</tr>
+    	{% endfor %}
+   
+		</table>
+	</form>
+	<style>
+		.box {
+                    
+                  
+		opacity: 0.8;
+		border-radius: 90px;
+		background-color: black;
+		color: white;
+		text-align: center;
+		transition: 0.25s;
+		
+	}
+	
+	.box input[type="email"],
+	.box input[type="password"],
+	.box input[type="text"],
+	.box input[type="number"] {
+		border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #3498db;padding: 10px 10px;width: 250px;outline: none;color: white;border-radius: 24px;transition: 0.25s
+	}
+	
+	.box h1 {
+		color: white;
+		text-transform: uppercase;
+		font-weight: 500
+	}
+	.box h2 {
+		color: white;
+		text-transform: uppercase;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-weight: 100;
+		font-size: medium;
+		font-style: italic;
+	}
+	
+	.box input[type="text"]:focus,
+	.box input[type="password"]:focus,
+	.box input[type="email"]:focus,
+	.box input[type="number"]:focus {
+		width: 300px;border-color: #2ecc71
+	}
+	
+	.box input[type="submit"] {border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #2ecc71;padding: 14px 40px;outline: none;color: white;border-radius: 24px;transition: 0.25s;cursor: pointer
+	}
+	
+	.box input[type="submit"]:hover {
+		background: #2ecc71
+	}
+	
+	.form-main-sec{
+		margin: 50px auto !important;
+	}
+	
+	</style>
+</center>

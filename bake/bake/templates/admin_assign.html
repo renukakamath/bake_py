@@ -1,0 +1,92 @@
+{% include 'adminheader.html'%}
+
+
+<!-- banner -->
+	<div class="pogoSlider" id="js-main-slider">
+		<div data-duration="2000" style="background-image:url(/static/images/b3.jpg);background-size: cover;height: 851px;padding-top: 200px">
+			<div>
+				<div class="container">
+				
+                    <center>
+<h1>ASSIGNMENT</h1>
+<form method="post" class="box">
+	
+	<div clss="form-main-sec">
+		 
+			
+		
+			<h2>Assign Courier</h2>
+			<select name="as" id="">
+                {%for row in data['assignedcor']%}
+				<option style="color: black;" value="{{row['courier_id']}}">{{row['courier_name']}}</option>
+                {% endfor %}
+			</select>
+		
+			
+		
+		
+		<input type="submit" name="update" value="submit" class="btn btn-success">
+	</div>
+    </form></center></div></div></div></div>
+
+	<style>
+		.box {
+                    
+                  
+		opacity: 0.8;
+		border-radius: 90px;
+		background-color: black;
+		color: white;
+		text-align: center;
+		transition: 0.25s;
+		
+	}
+	
+	.box input[type="email"],
+	.box input[type="password"],
+	.box input[type="text"],
+	.box input[type="number"],
+	.box textarea,
+    .box select,
+    .box option {
+		border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #3498db;padding: 10px 10px;width: 250px;outline: none;color: white;border-radius: 24px;transition: 0.25s
+	}
+	
+	.box h1 {
+		color: white;
+		text-transform: uppercase;
+		font-weight: 500
+	}
+	.box h2 {
+		color: white;
+		text-transform: uppercase;
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		font-weight: 100;
+		font-size: medium;
+		font-style: italic;
+	}
+	
+	.box input[type="text"]:focus,
+	.box input[type="password"]:focus,
+	.box input[type="email"]:focus,
+	.box input[type="number"]:focus,
+    .box select,
+    .box option,
+	.box textarea{
+		width: 300px;border-color: #2ecc71
+	}
+	
+	.box input[type="submit"] {border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #2ecc71;padding: 14px 40px;outline: none;color: white;border-radius: 24px;transition: 0.25s;cursor: pointer
+	}
+	
+	.box input[type="submit"]:hover {
+		background: #2ecc71
+	}
+	
+	.form-main-sec{
+		margin: 50px auto !important;
+	}
+	
+	</style>
+</center>
+{% include 'footer.html'%}

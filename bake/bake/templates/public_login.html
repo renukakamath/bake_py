@@ -1,0 +1,68 @@
+
+{% include 'publicheader.html' %}
+
+<!-- banner -->
+    <div class="pogoSlider" id="js-main-slider" style="height: 851px;">
+        <div   style="background-image:url();">
+           <div class="loginBox" style="height: 400px;width:500px;">
+        <h3 style="font-family:Verdana, Geneva, Tahoma, sans-serif;"><i  class="fas fa-user"></i>
+            Logg_In</h3>
+        <form method="post">
+            <div class="inputBox">
+             <input id="uname" type="text" name="uname" placeholder="Username"> 
+             <input id="pass" type="password" name="pwd" placeholder="Password"> 
+         </div> <input type="submit" name="login" value="Login">
+        </form> 
+       
+        <br>
+        <div class="text-center">
+            <font color="white">not a member?</font><h1 style="color: #9e6ace;" > <a  href="customer_registration" style="color: #9e6ace;font-family:Verdana, Geneva, Tahoma, sans-serif;">Sign-Up</a></h1>
+        </div>
+        
+    </div>
+
+        </div>
+       
+    </div>
+    <!-- //banner -->
+
+
+
+
+    <style type="text/css">
+    	body{margin: 0;
+            padding: 0;
+            background: url(/static/images/b2.jpg) no-repeat;
+            height: 100vh;font-family: sans-serif;
+            background-size: cover;
+            opacity: 0.8;
+            background-repeat: no-repeat;
+            background-position: center;overflow: hidden}
+            @media screen and (max-width: 600px)
+            {body{background-size: cover;position: fixed}}#particles-js{height: 100%}
+            .loginBox{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);width: 350px;min-height: 200px;opacity: 0.8;
+                background: #000000;
+                box-shadow: 8px 8px 8px rgb(0, 0, 0),-4px -5px 4px rgb(0, 0, 0);border-radius: 10px;padding: 40px;box-sizing: border-box}
+            .user{margin: 0 auto;display: block;margin-bottom: 20px}
+            h3{margin: 0;padding: 0 0 20px;color: #59238F;text-align: center}
+            .loginBox input{width: 100%;margin-bottom: 20px}.loginBox input[type="text"], .loginBox input[type="password"]{border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #3498db;padding: 10px 10px;width: 250px;outline: none;color: white;border-radius: 24px;transition: 0.25s}.loginBox input[type="text"]:focus, .loginBox input[type="password"]:focus{width: 300px;border-color: #2ecc71}.inputBox{position: relative}.inputBox span{position: absolute;top: 10px;color: #262626}.loginBox input[type="submit"]{border: 0;background: none;display: block;margin: 20px auto;text-align: center;width:160px;border: 2px solid #2ecc71;padding: 14px 40px;outline: none;color: white;border-radius: 24px;transition: 0.25s;cursor: pointer}.loginBox a{color: #262626;font-size: 14px;font-weight: bold;text-decoration: none;text-align: center;display: block}.loginBox input[type="submit"]:hover{background: #2ecc71}p{color: #0000ff}
+    </style>
+<!-- <center>
+<h1>Login</h1>
+<form method="post">
+	<table class="table" style="width:500px">
+		
+		<tr>
+			<th>User Name</th>
+			<td><input type="email" required="" class="form-control"  name="uname"></td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td><input type="password" required="" class="form-control" name="pwd"></td>
+		</tr>
+		<td align="center" colspan="2"><input type="submit" name="login" value="submit" class="btn btn-success"></td>
+	</table>
+</form>
+</center> -->
+
+{% include 'footer.html'%}

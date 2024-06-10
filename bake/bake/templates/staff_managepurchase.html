@@ -1,0 +1,174 @@
+{% include 'staffheader.html'%}
+
+
+<!-- banner -->
+	<div class="pogoSlider" id="js-main-slider">
+		<div  style="background-image:url(/static/images/b3.jpg);background-size: cover;height: 900px;padding-top: 200px">
+			<div>
+				<div class="container">
+
+<script type="text/javascript">
+	function TextOnTextChange()
+	{
+		var x =document.getElementById("p_amount").value;
+		var y =document.getElementById("p_qnty").value;
+	
+		document.getElementById("t_amount").value = x * y ;
+	}
+
+</script> 
+<center>
+<h1>Manage purchase</h1>
+<form method="post" enctype="multipart/form-data" class="box">
+
+			<th>Vendor</th>
+			<td><select name="ven" class="form-control" required="">
+				<option>Select</option>
+
+				
+				{% for row in data['vendordrop']%}
+                  	<option value="{{row['vendor_id']}}">{{row['vendor_name'] }}</option>
+                 {% endfor %}
+			</select>
+
+			<th>product</th>
+			<select name="pro" class="form-control" required="">
+				<option>Select</option>
+
+			
+				{% for row in data['productdrop']%}
+                  	<option value="{{row['product_id']}}">{{row['product_name'] }}</option>
+                 {% endfor %}
+			</select>
+
+			<th>cost price</th>
+			<input type="number" min="0" required="" class="form-control"  id="p_amount" name="cost_price">
+
+			<th>quantity</th>
+			<input type="number" min="0" required="" class="form-control"  id="p_qnty" onchange="TextOnTextChange()" name="quantity">
+
+			<th>Total</th>
+			<input type="number" min="0" required="" class="form-control" id="t_amount" name="total">
+
+		<input type="submit" name="purchase" value="submit" class="btn btn-success">
+
+
+</form>
+</center>
+</div></div></div></div>
+<center>
+	<h1>view purchase</h1>
+	<form>
+		<table class="table" style="width: 500px;background-color:black;color:white;border-radius:30px">
+			<tr>
+				<th>sino</th>
+				
+				
+				
+
+				
+				<th>Name</th>
+				<th>Description</th>
+				<th>purchase Image</th>
+				<th>Selling Price</th>
+				<th>cost price</th>
+				<th>quantity</th>
+		
+				<th>Status</th>
+				
+			</tr>
+			{% for row in data['purchaseview']%}
+    	<tr>
+    		<td>{{loop.index}}</td>
+    		
+    		<td>{{row['product_name']}}</td>
+    		<td>{{row['product_description'] }}</td>
+    		<td><img src="/{{row['product_image'] }}" height="100" width="100"></td>
+    		<td>{{row['selling_price']}}</td>
+    		<td>{{row['cost_price'] }}</td>
+    		<td>{{row['quantity'] }}</td>
+    		<td>{{row['status']}}</td>
+
+              
+    		
+    	
+      
+    		
+    	</tr>
+    	{% endfor %}
+
+    			{% if data['purchaseview'] %}
+    			<td align="center" colspan="8"><a class=" btn btn-success" href="?action=conform&pid={{data['purchaseview'][0]['purchase_master_id']}}">Confirm Purchase</a></td>
+
+    			{%  endif %}
+                
+
+    	
+
+    	
+
+    		
+ 
+		</table>
+	</form>
+	<style>
+		.box {
+					
+				  
+		opacity: 0.8;
+		border-radius: 90px;
+		background-color: black;
+		color: white;
+		text-align: center;
+		transition: 0.25s;
+		
+	}
+	
+	.box input[type="email"],
+	.box input[type="password"],
+	.box input[type="text"],
+	.box textarea,
+	.box select,
+	.box input[type="number"] , 
+	.box input[type="file"]{
+		border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #3498db;padding: 10px 10px;width: 250px;outline: none;color: white;border-radius: 24px;transition: 0.25s
+	}
+	
+	.box h1 {
+		color: white;
+		text-transform: uppercase;
+		font-weight: 500
+	}
+	.box h2 {
+		color: white;
+		text-transform: uppercase;
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		font-weight: 100;
+		font-size: medium;
+		font-style: italic;
+	}
+	
+	.box input[type="text"]:focus,
+	.box input[type="password"]:focus,
+	.box input[type="email"]:focus,
+	.box input[type="number"]:focus, 
+	.box input[type="file"]:focus,
+	.box textarea :focus,
+	.box select :focus{
+		width: 300px;border-color: #2ecc71
+	}
+	
+	.box input[type="submit"] {border: 0;background: none;display: block;margin: 20px auto;text-align: center;border: 2px solid #2ecc71;padding: 14px 40px;outline: none;color: white;border-radius: 24px;transition: 0.25s;cursor: pointer
+	}
+	
+	.box input[type="submit"]:hover {
+		background: #2ecc71
+	}
+	
+	.form-main-sec{
+		margin: 50px auto !important;
+	}
+	
+	</style>
+</center>
+{% include 'footer.html'%}
